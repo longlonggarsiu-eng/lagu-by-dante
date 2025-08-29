@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perahu Kertas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #00111a, #00334d);
+      color: #fff;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #00c3ff;
+      text-shadow: 0 0 10px #00c3ff;
+      animation: fadeInDown 1.5s ease;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    audio {
+      width: 300px;
+      margin-top: 20px;
+      filter: drop-shadow(0 0 10px rgba(0,195,255,0.7));
+    }
+
+    .waves {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 200px;
+      background: url("https://i.ibb.co/ZgwmX4d/wave.png") repeat-x;
+      background-size: contain;
+      animation: wave 10s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes wave {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>🎶 lagu by dante 🎶</h1>
+  <p>Nikmati lagu indah ini sayang</p>
+
+  <!-- Ganti "perahu-kertas.mp3" dengan file audio Anda -->
+ <audio id="lagu1" controls>
+  <source src="dante.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung pemutar audio.
+</audio>
+
+<audio id="lagu2" controls>
+  <source src="memang.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung pemutar audio.
+</audio>
+
+<audio id="lagu3" controls>
+  <source src="perahu.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung pemutar audio.
+</audio>
+
+  <audio id="lagu1" controls src
+  <audio id="lagu2" controls src 
+  <audio id="lagu3" controls src
+
+  <!-- Script selalu di bawah, sebelum </body> -->
+  <script>
+    const lagu1 = document.getElementById("lagu1");
+    const lagu2 = document.getElementById("lagu2");
+    const lagu3 = document.getElementById("lagu3");
+
+
+  // Jika lagu1 dimainkan, hentikan lagu2 & lagu3
+  lagu1.addEventListener("play", () => {
+    lagu2.pause();
+    lagu2.currentTime = 0;
+    lagu3.pause();
+    lagu3.currentTime = 0;
+  });
+
+  // Jika lagu2 dimainkan, hentikan lagu1 & lagu3
+  lagu2.addEventListener("play", () => {
+    lagu1.pause();
+    lagu1.currentTime = 0;
+    lagu3.pause();
+    lagu3.currentTime = 0;
+  });
+
+  // Jika lagu3 dimainkan, hentikan lagu1 & lagu2
+  lagu3.addEventListener("play", () => {
+    lagu1.pause();
+    lagu1.currentTime = 0;
+    lagu2.pause();
+    lagu2.currentTime = 0;
+  });
+  </script>
+  <div class="waves"></div>
+</body>
+</html>
