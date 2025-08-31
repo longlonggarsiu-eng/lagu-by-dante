@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music By Junna</title>
+  <title>https://junna.io/cd67Oyn.id</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-image: url("wave.jpg"); /* ganti dengan nama file fotomu */
-      background-size: cover;   /* supaya full layar */
+      background-image: url("wave.jpg"); /* ganti dengan gambar kamu */
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       color: #fff;
@@ -22,13 +22,15 @@
       overflow: hidden;
     }
 
+    .page { display: none; }
+    .active { display: block; }
+
     h1 {
       font-size: 1.7rem;
       margin-bottom: 10px;
       color: #00c3ff;
       text-shadow: 0 0 10px #000000;
-      animation: fadeInDown 1.5s ease;
-      background: rgba(0,0,0,0.6); /* biar teks tetap kebaca */
+      background: rgba(0,0,0,0.6);
       padding: 20px 35px;
       border-radius: 10px;
     }
@@ -48,84 +50,90 @@
       filter: drop-shadow(0 0 10px rgba(0,195,255,0.7));
     }
 
-    .waves {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 200%;
-      height: 200px;
-      background: url("wave.jpg") repeat-x;
-      background-size: contain;
-      animation: wave 10s linear infinite;
-      opacity: 0.6;
+    button {
+      padding: 4px 10px;
+      margin-top: 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
+      background: #00c3ff;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0,195,255,0.7);
+      transition: 0.3s;
     }
-
-    @keyframes wave {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    button:hover { background: #0099cc; }
   </style>
 </head>
 <body>
-  <h1>🎶 Music Bersama 🎶</h1>
-  <p>Nikmati lagu indah ini teman kuh</p>
+  <!-- Halaman 1 -->
+  <div id="page1" class="page active">
+    <h1>🎶 assalamualaikum selamat datang 🎶</h1>
+    <p>Klik tombol di bawah untuk menuju playlist musik.</p>
+    <button onclick="goToPage(2)">Masuk playlist</button>
+  </div>
 
-  <audio id="lagu1" controls>
-    <source src="heart.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung pemutar audio.
-  </audio>
+  <!-- Halaman 2 -->
+  <div id="page2" class="page">
+    <h1>🎶 Music Bersama 🎶</h1>
+    <p>Nikmati lagu indah ini teman kuh</p>
 
-  <audio id="lagu2" controls>
-    <source src="memang.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung pemutar audio.
-  </audio>
+    <audio id="lagu1" controls><source src="heart.mp3" type="audio/mpeg"></audio>
+    <audio id="lagu2" controls><source src="memang.mp3" type="audio/mpeg"></audio>
+    <audio id="lagu3" controls><source src="monolog.mp3" type="audio/mpeg"></audio>
+    <audio id="lagu4" controls><source src="perahu.mp3" type="audio/mpeg"></audio>
+    <audio id="lagu5" controls><source src="selamat.mp3" type="audio/mpeg"></audio>
 
-  <audio id="lagu3" controls>
-    <source src="monolog.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung pemutar audio.
-  </audio>
+    <button onclick="goToPage(1)">↩ BACK</button>
+    <button onclick="goToPage(3)">↪ NEXT</button>
+  </div>
 
-  <audio id="lagu4" controls>
-    <source src="perahu.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung pemutar audio.
-  </audio>
-  
-  <audio id="lagu5" controls>
-    <source src="perahu.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung pemutar audio.
-  </audio>
+  <!-- Halaman 3 -->
+  <div id="page3" class="page">
+    <h1>🎶 Music Bersama 🎶</h1>
+    <p>Halaman ke 2</p>
+
+    <audio id="lagu6" controls><source src="lebih.mp3" type="audio/mpeg"></audio>
+    <audio id="lagu7" controls><source src="begema.mp3" type="audio/mpeg"></audio>
+    <audio id="lagu8" controls><source src="duka.mp3" type="audio/mpeg"></audio>
+    <audio id="lagu9" controls><source src="memang.mp3" type="audio/mpeg"></audio>
+    <audio id="lagu10" controls><source src="sekuat.mp3" type="audio/mpeg"></audio>
+    
+    <audio id="lagu11" controls><source src="penjaga.mp3" type="audio/mpeg"></audio>
+
+    <button onclick="goToPage(2)">↩ BACK</button>
+  </div>
 
   <script>
-    const lagu1 = document.getElementById("lagu1");
-    const lagu2 = document.getElementById("lagu2");
-    const lagu3 = document.getElementById("lagu3");
-    const lagu4 = document.getElementById("lagu4");
-    const lagu5 = document.getElementById("lagu5");
-    
-    const semuaLagu = [lagu1, lagu2, lagu3, lagu4, lagu5];
+    // fungsi ganti halaman
+    function goToPage(num) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + num).classList.add('active');
+    }
 
+    // ambil semua lagu (1–10)
+    const semuaLagu = [];
+    for (let i = 1; i <= 11; i++) {
+      semuaLagu.push(document.getElementById("lagu" + i));
+    }
 
-    // ketika ada audio diputar, hentikan yang lain
+    // atur pause otomatis + auto-next
     semuaLagu.forEach((lagu, index) => {
+      // pause lagu lain saat diputar
       lagu.addEventListener("play", () => {
         semuaLagu.forEach(l => {
           if (l !== lagu) {
             l.pause();
-            l.currentTime = 0; // reset ke awal
+            l.currentTime = 0;
           }
         });
       });
 
-      // auto next ke lagu berikutnya setelah habis
+      // auto play lagu berikutnya
       lagu.addEventListener("ended", () => {
-        let nextIndex = (index + 1) % semuaLagu.length; // muter terus
-        semuaLagu[nextIndex].play();
+        if (index + 1 < semuaLagu.length) {
+          semuaLagu[index + 1].play();
+        }
       });
     });
   </script>
